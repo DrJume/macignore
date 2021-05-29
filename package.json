@@ -1,0 +1,42 @@
+{
+  "name": "macignore",
+  "productName": "MacIgnore",
+  "version": "0.1.0",
+  "description": "A daemon for ignoring files/folders from macOS processes like Time Machine and Spotlight indexing",
+  "private": true,
+  "homepage": "https://github.com/DrJume/macignore",
+  "repository": "https://github.com/DrJume/macignore",
+  "author": {
+    "name": "DrJume",
+    "email": ""
+  },
+  "license": "GPL-3.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "clean": "rm -rf dist/",
+    "build": "npm run clean && electron-builder --mac dir",
+    "build:prod": "npm run clean && electron-builder",
+    "dev": "nodemon --delay 0.5 --exec electron .",
+    "test": "pkill -x MacIgnore; npm run build && open dist/mac/MacIgnore.app"
+  },
+  "build": {
+    "appId": "de.drjume.${name}",
+    "copyright": "Copyright © 2021 ${author}",
+    "extraResources": [
+      "Credits.html"
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "darkModeSupport": true
+    }
+  },
+  "keywords": [
+    "macos"
+  ],
+  "devDependencies": {
+    "electron": "^13.0.1",
+    "electron-builder": "^22.10.5",
+    "nodemon": "^2.0.7"
+  }
+}
